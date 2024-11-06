@@ -2,7 +2,8 @@ const db = require('../db');
 
 // create a new post
 const createPost = (req, res) => {
-  const { title, content, publish_time } = req.body;
+  let { title, content, publish_time } = req.body;
+  publish_time = new Date(publish_time).toISOString().slice(0, 19).replace('T', ' ');
   const query = 'INSERT INTO posts (title, content, publish_time) VALUES (?, ?, ?)';
   
   db.execute(query, [title, content, publish_time], (err, result) => {
