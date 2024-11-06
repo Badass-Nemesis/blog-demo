@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const db = require('./db'); // Import the database connection
 const app = express();
@@ -5,7 +6,8 @@ const app = express();
 app.use(express.json());
 
 // Start the server 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3030
+app.listen(PORT, () => {
     console.log('Server is running on port 3000');
     // Example usage of the connection pool 
     db.execute('SELECT 1', (err, results) => {
