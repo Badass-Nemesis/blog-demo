@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const courseController = require('../controllers/courseController');
-const isAdmin = require('../middleware/adminMiddleware');
+const isAdmin = require('../middleware/adminMiddleware.js');
 
 router.post('/', isAdmin, courseController.createCourse);
 router.put('/:id', isAdmin, courseController.updateCourse);

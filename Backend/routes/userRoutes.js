@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const isAdmin = require('../middleware/adminMiddleware');
+const isAdmin = require('../middleware/adminMiddleware.js');
 
 router.delete('/:id', isAdmin, userController.deleteUser);
 router.get('/', isAdmin, userController.getAllUsers); 

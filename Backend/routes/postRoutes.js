@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../controllers/postController');
-const isAdmin = require('../middleware/adminMiddleware');
+const isAdmin = require('../middleware/adminMiddleware.js');
 
 router.post('/', isAdmin, postController.createPost);
 router.put('/:id', isAdmin, postController.updatePost);
