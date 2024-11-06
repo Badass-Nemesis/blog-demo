@@ -30,6 +30,25 @@ const getAllPosts = (req, res) => {
   });
 };
 
+// get single post by ID
+const getPostDetails = (req, res) => {
+  const { id } = req.params;
+  const query = 'SELECT * FROM posts WHERE id = ?';
+
+  db.execute(query, [id], (err, result) => {
+    if (err) {
+      console.error('Error retrieving post:', err);
+      res.status(500).send({ message: 'Error retrieving post' });
+    } else {
+      if (result.length === 0) {
+        res.status(404).send({ message: 'Post not found' });
+      } else {
+        res.status(200).send(result[0]);
+      }
+    }
+  });
+};
+
 // update a post
 const updatePost = (req, res) => {
   const { id } = req.params;
@@ -85,4 +104,4 @@ const deletePost = (req, res) => {
   });
 };
 
-module.exports = { createPost, getAllPosts, updatePost, deletePost };
+module.exports = { createPost, getAllPosts, updatePost, deletePost, getPostDetails };
