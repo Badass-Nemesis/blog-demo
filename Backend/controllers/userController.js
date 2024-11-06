@@ -63,6 +63,8 @@ const getUserDetails = (req, res) => {
     if (err) {
       console.error('Error retrieving user details:', err);
       res.status(500).send({ message: 'Error retrieving user details' });
+    } else if (result.length == 0) {
+      res.status(404).send("User not found")
     } else {
       res.status(200).send(result);
     }
@@ -73,30 +75,54 @@ const getUserDetails = (req, res) => {
 const updateUser = (req, res) => {
   const { id } = req.params;
   const { username, email, password } = req.body;
-  const query = 'UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?';
 
-  db.execute(query, [username, email, password, id], (err, result) => {
-    if (err) {
-      console.error('Error updating user:', err);
-      res.status(500).send({ message: 'Error updating user' });
-    } else {
-      res.status(200).send({ message: 'User updated successfully' });
+  const checkQuery = 'SELECT * FROM users WHERE id = ?';
+  db.execute(checkQuery, [id], (checkErr, checkResult) => {
+    if (checkErr) {
+      console.error('Error retrieving user:', checkErr);
+      return res.status(500).send({ message: 'Error retrieving user' });
     }
+
+    if (checkResult.length === 0) {
+      return res.status(404).send({ message: 'User not found' });
+    }
+
+    const updateQuery = 'UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?';
+    db.execute(updateQuery, [username, email, password, id], (updateErr, updateResult) => {
+      if (updateErr) {
+        console.error('Error updating user:', updateErr);
+        return res.status(500).send({ message: 'Error updating user' });
+      }
+
+      res.status(200).send({ message: 'User updated successfully' });
+    });
   });
 };
 
 // delete a user
 const deleteUser = (req, res) => {
   const { id } = req.params;
-  const query = 'DELETE FROM users WHERE id = ?';
 
-  db.execute(query, [id], (err, result) => {
-    if (err) {
-      console.error('Error deleting user:', err);
-      res.status(500).send({ message: 'Error deleting user' });
-    } else {
-      res.status(200).send({ message: 'User deleted successfully' });
+  const checkQuery = 'SELECT * FROM users WHERE id = ?';
+  db.execute(checkQuery, [id], (checkErr, checkResult) => {
+    if (checkErr) {
+      console.error('Error retrieving user:', checkErr);
+      return res.status(500).send({ message: 'Error retrieving user' });
     }
+
+    if (checkResult.length === 0) {
+      return res.status(404).send({ message: 'User not found' });
+    }
+
+    const deleteQuery = 'DELETE FROM users WHERE id = ?';
+    db.execute(deleteQuery, [id], (deleteErr, deleteResult) => {
+      if (deleteErr) {
+        console.error('Error deleting user:', deleteErr);
+        return res.status(500).send({ message: 'Error deleting user' });
+      }
+
+      res.status(200).send({ message: 'User deleted successfully' });
+    });
   });
 };
 
