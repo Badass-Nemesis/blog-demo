@@ -1,16 +1,29 @@
 require('dotenv').config();
 const express = require('express');
-const db = require('./db'); // Import the database connection
+const db = require('./db'); 
 const app = express();
+const postRoutes = require('./routes/postRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const userRoutes = require('./routes/userRoutes');
+const purchaseRoutes = require('./routes/purchaseRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
 
 app.use(express.json());
 
-// Start the server 
+// routing
+app.use('/api/posts', postRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/purchases', purchaseRoutes);
+app.use('/api/payments', paymentRoutes);
+
+
+// server starting
 const PORT = process.env.PORT || 3030
 app.listen(PORT, () => {
     console.log('Server is running on port 3000');
-    // Example usage of the connection pool 
-    db.execute('SELECT 1', (err, results) => {
+
+    db.execute('SELECT 1', (err) => {
         if (err) return console.error('Error executing query:', err);
 
         console.log('MySQL DB is connected');
