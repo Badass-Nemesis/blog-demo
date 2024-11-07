@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 
 const isAdmin = (req, res, next) => {
-  if (!req.headers.cookie) {
+  // console.log(req); // debug
+  if (!req.headers.xauth) {
     return res.status(403).send({ message: 'Access denied: No token provided' });
   }
 
-  const cookies = req.headers.cookie.split(';').reduce((acc, cookie) => {
+  const cookies = req.headers.xauth.split(';').reduce((acc, cookie) => {
     const [name, value] = cookie.split('=').map(c => c.trim());
     acc[name] = value;
     return acc;

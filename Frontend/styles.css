@@ -289,6 +289,117 @@ footer {
     margin-top: 1rem;
 }
 
+/* Common Styles for Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adds space between form fields */
+    margin-top: 1rem; /* Adds space at the top of the form */
+    max-width: 500px; /* Sets max width for form */
+    margin: 0 auto; /* Centers the form container */
+}
+
+form label, form input, form textarea, form button {
+    width: 100%;
+}
+
+form input, form textarea {
+    padding: 0.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+form button {
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem; /* Adds space above the button */
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for Centering the Manage Content Section */
+#admin-section {
+    text-align: center;
+}
+
+.button-group, .options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Adds space between buttons */
+    margin-bottom: 1rem; /* Adds space below the button group */
+}
+
+/* Main Buttons for Managing Sections (Blue) */
+.manage-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff; /* Blue background color */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.manage-button:hover {
+    background-color: #0056b3;
+}
+
+/* Secondary Option Buttons (Green) */
+.option-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745; /* Green background color */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.option-button:hover {
+    background-color: #218838;
+}
+
+
+/* Additional Styles for Option Buttons */
+.options {
+    margin-top: 1rem; /* Adds space above the options */
+}
+
+/* Styles for Users Table */
+#users-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove spaces between table cells */
+    margin-top: 1rem;
+}
+
+#users-table th, #users-table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #dddddd; /* Light grey border */
+}
+
+#users-table th {
+    background-color: #007bff; /* Header background color */
+    color: #ffffff; /* Header text color */
+}
+
+#users-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for better readability */
+}
+
+#users-table tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 1200px) {
     .course-item {

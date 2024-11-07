@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const db = require('./db'); 
+const db = require('./db');
 const app = express();
 const postRoutes = require('./routes/postRoutes');
 const courseRoutes = require('./routes/courseRoutes');
@@ -9,7 +9,11 @@ const userRoutes = require('./routes/userRoutes');
 const purchaseRoutes = require('./routes/purchaseRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 
-app.use(cors());
+const allowedOrigins = ['http://127.0.0.1:5500'];
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true // Allow credentials 
+}));
 app.use(express.json());
 
 // routing

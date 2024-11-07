@@ -19,18 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(loginData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === "Login successful") {
-                    alert('Login successful!');
-                    window.location.href = 'index.html'; // Redirect to homepage
-                } else {
-                    alert('Login failed. Please check your credentials.');
-                }
-            })
-            .catch(error => {
-                console.error('Error during login:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // debug
+                    if (data.message === "Login successful") {
+                        // Set the JWT as a cookie
+                        // document.cookie = `jwt=${data.jwt}; Path=/; Secure; HttpOnly;`;
+
+                        // set in local storage
+                        localStorage.setItem('jwt', data.jwt);
+
+                        alert('Login successful!');
+                        window.location.href = 'index.html'; // Redirect to homepage
+                    } else {
+                        alert('Login failed. Please check your credentials.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during login:', error);
+                });
         });
     }
 
@@ -51,18 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(signupData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === "Signup successful") {
-                    alert('Signup successful!');
-                    window.location.href = 'login.html'; // Redirect to login page
-                } else {
-                    alert('Signup failed. Please check your details.');
-                }
-            })
-            .catch(error => {
-                console.error('Error during signup:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === "Signup successful") {
+                        alert('Signup successful!');
+                        window.location.href = 'login.html'; // Redirect to login page
+                    } else {
+                        alert('Signup failed. Please check your details.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during signup:', error);
+                });
         });
     }
 
@@ -72,18 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 credentials: 'include' // Include cookies in request
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === "Logout successful") {
-                    alert('Logout successful!');
-                    window.location.href = 'login.html'; // Redirect to login page
-                } else {
-                    alert('Logout failed. Please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error during logout:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === "Logout successful") {
+                        alert('Logout successful!');
+                        window.location.href = 'login.html'; // Redirect to login page
+                    } else {
+                        alert('Logout failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                });
         });
     }
 });
