@@ -41,7 +41,7 @@ const getCourseDetails = (req, res) => {
         } else if (result.length == 0) {
             res.status(404).send({ message: 'Course not found' });
         } else {
-            res.status(200).send(result);
+            res.status(200).send(result[0]);
         }
 
     });
