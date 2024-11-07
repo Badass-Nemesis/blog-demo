@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light gray */
+    color: #333333; /* Dark gray */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full height */
+}
+
+header {
+    background-color: #333333; /* Dark gray */
+    color: #ffffff; /* White */
+    width: 100%; /* Full width */
+    padding: 1rem 0; /* Vertical padding */
+    display: flex; /* Use flexbox for header layout */
+    justify-content: center; /* Center the .header-container within the header */
+    align-items: center; /* Center items vertically */
+}
+
+.header-container {
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Maximum width */
+    display: flex; /* Use flexbox for header container layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding: 0 1rem; /* Horizontal padding */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Display navigation items in a row */
+}
+
+header nav ul li {
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: #ffffff; /* White */
+    text-decoration: none;
+}
+
+main {
+    flex: 1; /* Ensure main content grows to fill available space */
+    padding: 2rem;
+}
+
+.container {
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Max width for larger screens */
+    margin: 0 auto; /* Center the container */
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: #333333; /* Dark gray */
+    color: #ffffff; /* White */
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.post-item p {
+    margin: 0.5rem 0 0 0; /* Add a bit of spacing above the excerpt */
+    color: #666666; /* Lighter gray color for the excerpt text */
+    font-size: 0.9rem; /* Slightly smaller font size for the excerpt */
+}
+
+.publish-time {
+    color: #999999; /* Even lighter gray for publish time */
+    font-size: 0.8rem; /* Smaller font size for publish time */
+    margin-top: 0.5rem; /* Add some space above the publish time */
+}
+
+/* New CSS for the single post content */
+#post-content {
+    width: 100%; /* Full width */
+    max-width: 800px; /* Max width similar to the post items */
+    margin: 0 auto; /* Center the content */
+    padding: 1rem; /* Inner padding for content */
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+#post-list,
+#upcoming-post-list,
+#course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between items */
+    padding: 0;
+    list-style: none; /* Remove default list styling */
+}
+
+.post-item,
+.course-item {
+    flex: 1 1 calc(30% - 20px); /* Adjust width for 3 items per row with spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    background-color: #ffffff; /* White background for the boxes */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a slight elevation effect */
+    padding: 1rem; /* Inner padding for content */
+    margin-bottom: 20px; /* Spacing at the bottom */
+    position: relative; /* Position relative for discount box */
+    text-align: center; /* Center align text inside the box */
+}
+
+.post-item a,
+.course-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333333; /* Dark gray text color */
+}
+
+.course-discount {
+    position: absolute; /* Position discount box */
+    top: 10px; /* Offset from top */
+    left: 10px; /* Offset from left */
+    background-color: #ff5722; /* Discount box background color */
+    color: #ffffff; /* White text */
+    padding: 0.5rem; /* Padding inside discount box */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.8rem; /* Smaller font size */
+}
+
+.original-price {
+    text-decoration: line-through; /* Strike through original price */
+    color: #999999; /* Light gray color */
+}
+
+.countdown-timer {
+    color: #ff0000; /* Red color for countdown timer */
+    font-size: 1rem; /* Font size for countdown timer */
+    margin-top: 1rem; /* Spacing above the timer */
+}
