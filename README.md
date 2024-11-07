@@ -6,6 +6,11 @@ A blog website made for SciAstra internship assignment, using HTML, CSS, JavaScr
 
 This project is a full-stack application that features a backend server using Node.js and MySQL, and a frontend built with HTML, CSS, and JavaScript. 
 
+## 🎥 Demo Video
+
+Check out the app in action:
+[![Demo Video](YTlink/maxresdefault.jpg)](YTlink)
+
 ## 📁 Project Structure
 
 - **Backend**: Located in the `backend` folder (Node.js and MySQL)
