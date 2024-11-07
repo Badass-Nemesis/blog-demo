@@ -42,6 +42,14 @@ Check out the app in action:
 - Ensured seamless frontend-backend connection for real-time data updates.
 - The backend port must be 3000 as in HTML, CSS, JS frontend we can't use .env for variables.
 - Using jwt (JsonWebToken) for user authorization.
+- **.env file** in Backend should contain these variables:
+  - PORT (set it to 3000)
+  - DB_HOST 
+  - DB_USER
+  - DB_PASS
+  - DB_NAME (set it to blog_db if you are importing mine)
+  - SECRET_KEY (ex- privateKey123)
+  - FRONTEND_URL (set it to http://127.0.0.1:5500)
 
 ## 🚀 How to Start
 
