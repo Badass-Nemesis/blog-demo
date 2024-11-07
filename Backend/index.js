@@ -9,7 +9,7 @@ const userRoutes = require('./routes/userRoutes');
 const purchaseRoutes = require('./routes/purchaseRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 
-const allowedOrigins = ['http://127.0.0.1:5500'];
+const allowedOrigins = [process.env.FRONTEND_URL];
 app.use(cors({
     origin: allowedOrigins,
     credentials: true // Allow credentials 
