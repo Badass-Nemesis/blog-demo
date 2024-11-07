@@ -441,6 +441,10 @@ button {
     margin-top: 1rem;
 }
 
+/* Ensure the spacing remains consistent */
+.hidden {
+    visibility: hidden;
+}
 
 /* Media queries for responsiveness */
 @media (max-width: 1200px) {

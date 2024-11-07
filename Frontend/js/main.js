@@ -30,21 +30,26 @@ function startCountdown() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('jwt');
+    const navList = document.querySelector('nav ul');
+
+    // Remove existing login/logout links
     const loginLink = document.querySelector('nav ul li a[href="login.html"]');
     const logoutLink = document.querySelector('nav ul li a[href="logout.html"]');
+    if (loginLink) loginLink.parentElement.remove();
+    if (logoutLink) logoutLink.parentElement.remove();
 
-    console.log('Token:', token); // Debugging
+    // Create new login/logout link elements
+    const loginItem = document.createElement('li');
+    const logoutItem = document.createElement('li');
+    loginItem.innerHTML = '<a href="login.html">Login</a>';
+    logoutItem.innerHTML = '<a href="logout.html">Logout</a>';
 
     if (token) {
-        console.log('Token exists, hiding login link and showing logout link'); // Debugging
-        // If the token exists, show the Logout link and hide the Login link
-        if (loginLink) loginLink.style.display = 'none';
-        if (logoutLink) logoutLink.style.display = 'inline';
+        console.log('Token exists, adding logout link'); // Debugging
+        navList.appendChild(logoutItem);
     } else {
-        console.log('Token does not exist, showing login link and hiding logout link'); // Debugging
-        // If the token doesn't exist, show the Login link and hide the Logout link
-        if (loginLink) loginLink.style.display = 'inline';
-        if (logoutLink) logoutLink.style.display = 'none';
+        console.log('Token does not exist, adding login link'); // Debugging
+        navList.appendChild(loginItem);
     }
 
     const postList = document.getElementById('post-list');
@@ -64,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const upcomingPosts = posts.filter(post => new Date(post.publish_time) > now);
             const publishedPosts = posts.filter(post => new Date(post.publish_time) <= now);
 
-            if (upcomingPosts.length > 0) {
+            if (upcomingPostList != null && upcomingPosts.length > 0) {
                 upcomingPostsExist = true;
                 upcomingPosts.slice(0, maxItemsToShow).forEach(post => {
                     const li = document.createElement('li');

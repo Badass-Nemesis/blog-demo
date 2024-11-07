@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
-    const logoutButton = document.getElementById('logout-button');
+    const logoutButton = document.getElementById('logout-form');
 
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('jwt');
+
             fetch('http://localhost:3000/api/users/logout', {
                 method: 'POST',
                 credentials: 'include' // Include cookies in request
