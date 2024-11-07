@@ -17,8 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h2>${course.name}</h2>
                             <p class="course-description">${course.description}</p>
                             <p class="course-price">Price: ₹${discountedPrice} <span class="original-price">₹${course.price}</span></p>
+                            <button class="buy-now-button" data-course-id="${course.id}">Buy Now</button>
                         </div>
                     `;
+
+                    // Add event listener to "Buy Now" button
+                    document.querySelector('.buy-now-button').addEventListener('click', () => {
+                        const orderId = generateOrderId(); // You can implement your own order ID generation logic
+                        window.location.href = `../html/payment.html?orderId=${orderId}&courseId=${courseId}`;
+                    });
                 } else {
                     courseContent.innerHTML = '<p>Error: Course data is missing or incomplete.</p>';
                 }
@@ -54,3 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+// Function to generate a dummy order ID (for example purposes)
+function generateOrderId() {
+    return 'ORD' + Math.floor(Math.random() * 1000000);
+}

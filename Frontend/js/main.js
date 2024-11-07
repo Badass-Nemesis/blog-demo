@@ -29,6 +29,20 @@ function startCountdown() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('jwtToken');
+    const loginLink = document.querySelector('nav ul li a[href="login.html"]');
+    const logoutLink = document.querySelector('nav ul li a[href="logout.html"]');
+
+    if (token) {
+        // If the token exists, show the Logout link and hide the Login link
+        loginLink.style.display = 'none';
+        logoutLink.style.display = 'inline';
+    } else {
+        // If the token doesn't exist, show the Login link and hide the Logout link
+        loginLink.style.display = 'inline';
+        logoutLink.style.display = 'none';
+    }
+
     const postList = document.getElementById('post-list');
     const upcomingPostList = document.getElementById('upcoming-post-list');
     const upcomingPostsSection = document.getElementById('upcoming-posts-section');

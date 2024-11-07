@@ -4,8 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
+    <title>Thank You</title>
     <link rel="stylesheet" href="../styles.css">
+    <script>
+        // Initial countdown time in seconds
+        let countdownTime = 5;
+
+        // Function to update the countdown timer
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = countdownTime;
+
+            if (countdownTime > 0) {
+                countdownTime--;
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Start the countdown
+        setInterval(updateCountdown, 1000);
+    </script>
 </head>
 
 <body>
@@ -24,19 +43,15 @@
             </nav>
         </div>
     </header>
-    <main>
-        <section id="logout-section">
-            <h2>Logout</h2>
-            <form id="logout-form">
-                <button type="submit">Logout</button>
-            </form>
-            <p id="logout-message" class="success-message"></p>
-        </section>
+    <main class="thankyou-main">
+        <h1>Thank You!</h1>
+        <p>Your payment has been successfully processed. You will be redirected to the homepage in <span
+                id="countdown">5</span> seconds.</p>
+        <p>If you are not redirected, <a href="index.html">click here</a>.</p>
     </main>
     <footer>
         <p>&copy; 2024 My Blog</p>
     </footer>
-    <script src="../js/auth.js"></script>
     <script src="../js/main.js"></script>
 </body>
 
