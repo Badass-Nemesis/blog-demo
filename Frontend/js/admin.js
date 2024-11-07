@@ -61,10 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const token = getToken(); // Get the JWT token
             const formData = new FormData(createPostForm);
+
+            console.log(formData); // debugging
+            // Convert local datetime to UTC ISO 8601 format with Z 
+            const localDate = new Date(formData.get('publishtime'));
+            const isoTimestamp = localDate.toISOString();
+
             const postData = {
                 title: formData.get('title'),
                 content: formData.get('content'),
-                publish_time: new Date().toISOString()
+                publish_time: isoTimestamp
             };
 
             fetch('http://localhost:3000/api/posts', {
