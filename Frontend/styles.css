@@ -204,6 +204,91 @@ footer {
     text-decoration: underline; /* Underline on hover */
 }
 
+/* Common Styles for Login and Signup Sections */
+#login-section,
+#signup-section {
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for slight elevation */
+    padding: 2rem; /* Padding inside the container */
+    max-width: 400px; /* Maximum width for the container */
+    margin: 2rem auto; /* Center the container with margin */
+    text-align: center; /* Center align text inside the container */
+}
+
+#login-section h2,
+#signup-section h2 {
+    color: #333333; /* Dark gray text color */
+    margin-bottom: 1rem; /* Space below the heading */
+}
+
+#login-section form,
+#signup-section form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 1rem; /* Space between form elements */
+}
+
+#login-section label,
+#signup-section label {
+    text-align: left; /* Left align labels */
+    color: #555555; /* Medium gray color for text */
+}
+
+#login-section input,
+#signup-section input {
+    padding: 0.5rem; /* Padding inside the input fields */
+    border: 1px solid #cccccc; /* Border color for input fields */
+    border-radius: 5px; /* Rounded corners for input fields */
+    font-size: 1rem; /* Font size for input fields */
+}
+
+#login-section button,
+#signup-section button {
+    padding: 0.75rem; /* Padding inside the button */
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* No border for button */
+    border-radius: 5px; /* Rounded corners for button */
+    font-size: 1rem; /* Font size for button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#login-section button:hover,
+#signup-section button:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+}
+
+/* Logout Section Styles */
+#logout-section {
+    text-align: center; /* Center align text inside the container */
+    margin: 2rem auto; /* Center the container with margin */
+}
+
+#logout-section button {
+    padding: 0.75rem; /* Padding inside the button */
+    background-color: #dc3545; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* No border for button */
+    border-radius: 5px; /* Rounded corners for button */
+    font-size: 1rem; /* Font size for button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#logout-section button:hover {
+    background-color: #c82333; /* Darker red background on hover */
+}
+
+.error-message {
+    color: red;
+    margin-top: 1rem;
+}
+
+.success-message {
+    color: green;
+    margin-top: 1rem;
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 1200px) {
     .course-item {

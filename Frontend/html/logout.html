@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Blog Posts</title>
+    <title>Logout</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
-
 <body>
     <header>
         <div class="header-container">
@@ -24,18 +22,18 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <main>
-            <section>
-                <h2>Upcoming Blog Posts</h2>
-                <ul id="upcoming-post-list"></ul>
-            </section>
-        </main>
-    </div>
+    <main>
+        <section id="logout-section">
+            <h2>Logout</h2>
+            <form id="logout-form">
+                <button type="submit">Logout</button>
+            </form>
+            <p id="logout-message" class="success-message"></p>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2024 My Blog</p>
     </footer>
-    <script src="../js/post.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
-
 </html>
