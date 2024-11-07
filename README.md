@@ -82,6 +82,7 @@ Check out the app in action:
 | Unused APIs | Some APIs are not being used and should be removed. |
 | Localhost URL in env | Didn't put the localhost url in env for easy change. |
 | CORS error | CORS (cross-origin resource sharing) causing error for unknown reason. |
+| Timestamp difference | There are few places where UTC is being used instead of local time and it is causing issues. |
 
 
 ## 📬 Feedback
