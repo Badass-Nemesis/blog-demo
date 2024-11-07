@@ -29,18 +29,22 @@ function startCountdown() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('jwtToken');
+    const token = localStorage.getItem('jwt');
     const loginLink = document.querySelector('nav ul li a[href="login.html"]');
     const logoutLink = document.querySelector('nav ul li a[href="logout.html"]');
 
+    console.log('Token:', token); // Debugging
+
     if (token) {
+        console.log('Token exists, hiding login link and showing logout link'); // Debugging
         // If the token exists, show the Logout link and hide the Login link
-        loginLink.style.display = 'none';
-        logoutLink.style.display = 'inline';
+        if (loginLink) loginLink.style.display = 'none';
+        if (logoutLink) logoutLink.style.display = 'inline';
     } else {
+        console.log('Token does not exist, showing login link and hiding logout link'); // Debugging
         // If the token doesn't exist, show the Login link and hide the Logout link
-        loginLink.style.display = 'inline';
-        logoutLink.style.display = 'none';
+        if (loginLink) loginLink.style.display = 'inline';
+        if (logoutLink) logoutLink.style.display = 'none';
     }
 
     const postList = document.getElementById('post-list');
