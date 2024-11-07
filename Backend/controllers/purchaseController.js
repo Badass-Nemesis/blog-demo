@@ -1,19 +1,23 @@
 const db = require('../db');
 
 // select courses for purchase
-const selectCourses = (req, res) => {
-    const { userId, courseIds } = req.body; // courseIds should be an array of Course IDs here
-    const query = 'INSERT INTO purchases (user_id, course_id) VALUES (?, ?)';
-
-    courseIds.forEach(courseId => {
-        db.execute(query, [userId, courseId], (err, result) => {
-            if (err) {
-                console.error('Error selecting course:', err);
-                res.status(500).send({ message: 'Error selecting course' });
-            }
+const selectCourse = (req, res) => {
+    /*
+        // not created purchases table
+        const { userId, courseIds } = req.body; // courseIds should be an array of Course IDs here
+        const query = 'INSERT INTO purchases (user_id, course_id) VALUES (?, ?)';
+    
+        courseIds.forEach(courseId => {
+            db.execute(query, [userId, courseId], (err, result) => {
+                if (err) {
+                    console.error('Error selecting course:', err);
+                    res.status(500).send({ message: 'Error selecting course' });
+                }
+            });
         });
-    });
-    res.status(200).send({ message: 'Courses selected successfully' });
+        res.status(200).send({ message: 'Courses selected successfully' });
+        */
+    res.status(200).send({ message: 'Course selected successfully' });
 };
 
 // payment page (dummy)
@@ -28,4 +32,4 @@ const twoStepVerification = (req, res) => {
     res.status(200).send({ message: 'Verification successful' });
 };
 
-module.exports = { selectCourses, dummyPaymentPage, twoStepVerification };
+module.exports = { selectCourse, dummyPaymentPage, twoStepVerification };
