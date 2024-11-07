@@ -95,8 +95,9 @@
                         <textarea id="create-course-description" name="description" required></textarea>
                         <label for="create-course-price">Price:</label>
                         <input type="number" id="create-course-price" name="price" required>
-                        <label for="create-course-discount">Discount:</label>
-                        <input type="number" id="create-course-discount" name="discount" required>
+                        <label for="create-course-discount">Discount (%):</label>
+                        <input type="number" id="create-course-discount" name="discount" step="0.01" value="0.00"
+                            min="0" max="100">
                         <button type="submit">Create Course</button>
                     </form>
 

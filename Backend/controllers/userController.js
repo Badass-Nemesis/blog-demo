@@ -15,7 +15,7 @@ const login = (req, res) => {
     const token = jwt.sign({ id: user.id, username: user.username, admin: user.admin }, process.env.SECRET_KEY, { expiresIn: '1h' });
 
     res.cookie('jwt', token, { httpOnly: true, secure: true });
-    res.status(200).send({ message: 'Login successful' , jwt: token});
+    res.status(200).send({ message: 'Login successful' , jwt: token, userID: user.id});
   });
 };
 

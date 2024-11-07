@@ -1,27 +1,21 @@
 const db = require('../db');
 
-// process a payment (dummy)
+// Process a payment and store details in the database
 const processPayment = (req, res) => {
-  const { payments_user_id, amount, paymentMethod } = req.body;
+  const { payments_user_id, payments_course_id, amount, paymentMethod } = req.body;
+  const query = 'INSERT INTO payments (payments_user_id, payments_course_id, amount, payment_method, paid_at) VALUES (?, ?, ?, ?, NOW())';
 
-  /*
-    // not created payments table
-    const query = 'INSERT INTO payments (payments_user_id, amount, payment_method) VALUES (?, ?, ?)';
-    
-    db.execute(query, [payments_user_id, amount, paymentMethod], (err, result) => {
-      if (err) {
-        console.error('Error processing payment:', err);
-        res.status(500).send({ message: 'Error processing payment' });
-      } else {
-        res.status(200).send({ message: 'Payment processed successfully' });
-      }
-    });
-    */
-
-    res.status(200).send({ message: 'Payment processed successfully' });
+  db.execute(query, [payments_user_id, payments_course_id, amount, paymentMethod], (err, result) => {
+    if (err) {
+      console.error('Error processing payment:', err);
+      res.status(500).send({ message: 'Error processing payment' });
+    } else {
+      res.status(200).send({ message: 'Payment processed successfully' });
+    }
+  });
 };
 
-// get payment options (dummy)
+// Get payment options (dummy)
 const getPaymentOptions = (req, res) => {
   const paymentOptions = [
     { method: 'Credit Card', description: 'Pay with credit card' },

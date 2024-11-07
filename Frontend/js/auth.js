@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // set in local storage
                         localStorage.setItem('jwt', data.jwt);
+                        localStorage.setItem('userID', data.userID);
 
                         alert('Login successful!');
                         window.location.href = 'index.html'; // Redirect to homepage

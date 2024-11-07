@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const orderId = urlParams.get('orderId');
     const courseId = urlParams.get('courseId');
+    const userID = localStorage.getItem('userID');
     let course;
 
     // Display order and course IDs
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(courseData => {
             course = courseData;
             if (course && course.price !== undefined) {
-                amountElement.textContent = `₹${course.price}`;
+                amountElement.textContent = `₹${(course.price - (course.price * (course.discount / 100))).toFixed(2)}`;
             } else {
                 alert('Error fetching course price');
             }
@@ -84,8 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const paymentDetails = {
-            payments_user_id: 'dummyUserId',
-            amount: course.price,
+            payments_user_id: userID,
+            payments_course_id: course.id,
+            amount: (course.price - (course.price * (course.discount / 100))).toFixed(2),
             paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
             cardNumber: document.getElementById('card-number') ? document.getElementById('card-number').value : '',
             cardExpiry: document.getElementById('card-expiry') ? document.getElementById('card-expiry').value : '',
@@ -100,19 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(paymentDetails)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Payment processed successfully') {
-                alert('A verification code has been sent to your email for this purchase.');
-                document.getElementById('verification-section').style.display = 'block';
-            } else {
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Payment processed successfully') {
+                    alert('A verification code has been sent to your email for this purchase.');
+                    document.getElementById('verification-section').style.display = 'block';
+                } else {
+                    alert('Error processing payment. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error processing payment:', error);
                 alert('Error processing payment. Please try again.');
-            }
-        })
-        .catch(error => {
-            console.error('Error processing payment:', error);
-            alert('Error processing payment. Please try again.');
-        });
+            });
     });
 
     // Handle verification form submission
@@ -121,24 +123,24 @@ document.addEventListener('DOMContentLoaded', () => {
         verificationForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const verificationCode = document.getElementById('verification-code').value;
+            // const verificationCode = document.getElementById('verification-code').value;
 
             fetch(`http://localhost:3000/api/purchases/verify`, {
                 method: 'POST'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === 'Verification successful') {
-                    alert('Verification successful! Thank you for your purchase.');
-                    window.location.href = `../html/thankyou.html`;
-                } else {
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Verification successful') {
+                        alert('Verification successful! Thank you for your purchase.');
+                        window.location.href = `../html/thankyou.html`;
+                    } else {
+                        alert('Error verifying code. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error verifying code:', error);
                     alert('Error verifying code. Please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error verifying code:', error);
-                alert('Error verifying code. Please try again.');
-            });
+                });
         });
     }
 });

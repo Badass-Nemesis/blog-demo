@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const courseContent = document.getElementById('course-content');
     const urlParams = new URLSearchParams(window.location.search);
     const courseId = urlParams.get('id');
+    const token = localStorage.getItem('jwt');
 
     if (courseId) {
         // Fetch the full course details
@@ -23,8 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Add event listener to "Buy Now" button
                     document.querySelector('.buy-now-button').addEventListener('click', () => {
-                        const orderId = generateOrderId(); // You can implement your own order ID generation logic
-                        window.location.href = `../html/payment.html?orderId=${orderId}&courseId=${courseId}`;
+                        if (token != null || token != undefined) {
+                            const orderId = generateOrderId(); // You can implement your own order ID generation logic
+                            window.location.href = `../html/payment.html?orderId=${orderId}&courseId=${courseId}`;
+                        } else {
+                            courseContent.innerHTML = '<p>Login before purchase.</p>';
+                        }
+
                     });
                 } else {
                     courseContent.innerHTML = '<p>Error: Course data is missing or incomplete.</p>';
