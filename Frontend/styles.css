@@ -368,7 +368,6 @@ form button:hover {
     background-color: #218838;
 }
 
-
 /* Additional Styles for Option Buttons */
 .options {
     margin-top: 1rem; /* Adds space above the options */
@@ -448,13 +447,75 @@ button {
 
 /* Media queries for responsiveness */
 @media (max-width: 1200px) {
-    .course-item {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the start */
+        padding: 0 2rem; /* Add some padding */
+    }
+
+    header nav ul {
+        flex-direction: row;
+        flex-wrap: wrap; /* Allow wrapping of items */
+        justify-content: flex-start; /* Align items to the start */
+    }
+
+    .post-item, .course-item {
         flex: 1 1 calc(45% - 20px); /* 2 items per row */
+    }
+
+    .button-group, .options {
+        flex-direction: column;
+        gap: 0.5rem; /* Adjust spacing */
+    }
+
+    #course-content {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .manage-button, .option-button {
+        width: 100%; /* Full width */
     }
 }
 
 @media (max-width: 768px) {
-    .course-item {
+    .post-item, .course-item {
         flex: 1 1 100%; /* 1 item per row */
+    }
+
+    .header-container {
+        padding: 0 0.5rem;
+        align-items: center; /* Center items */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Align items vertically */
+        align-items: center; /* Center items */
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .container, #post-content, #course-content, #payment-form {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .button-group, .options {
+        gap: 0.5rem;
+    }
+
+    .view-more {
+        font-size: 0.8rem;
+    }
+
+    .payment-details, .payment-methods {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .manage-button, .option-button {
+        width: 100%; /* Full width */
     }
 }

@@ -66,8 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const now = new Date();
             let upcomingPostsExist = false;
 
-            const upcomingPosts = posts.filter(post => new Date(post.publish_time) > now);
-            const publishedPosts = posts.filter(post => new Date(post.publish_time) <= now);
+            const upcomingPosts = posts
+                .filter(post => new Date(post.publish_time) > now)
+                .sort((a, b) => new Date(a.publish_time) - new Date(b.publish_time)); // Sort in ascending order
+
+            const publishedPosts = posts
+                .filter(post => new Date(post.publish_time) <= now)
+                .sort((a, b) => new Date(b.publish_time) - new Date(a.publish_time)); // Sort in descending order
+
 
             if (upcomingPostList != null && upcomingPosts.length > 0) {
                 upcomingPostsExist = true;
@@ -75,9 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const li = document.createElement('li');
                     li.classList.add('post-item');
 
+                    const localPublishTime = new Date(post.publish_time).toLocaleString(); // Convert to local time
                     li.innerHTML = `
                         <h3>${post.title}</h3>
                         <p>Publishing in: <span class="countdown" data-time="${new Date(post.publish_time).toISOString()}"></span></p>
+                        <p>Local Publish Time: ${localPublishTime}</p>
                     `;
 
                     upcomingPostList.appendChild(li);
