@@ -42,7 +42,7 @@ Check out the app in action:
 - Code refactoring is needed for better structure and readability.
 - Errors are showing for courses and posts on the logout page.
 - Automatic redirect to the admin page is not implemented.
-- Payments and purchase tables are not present in the database.
+- Payments table is not taking payments_course_id as foreign key to courses table.
 - Some APIs are not being used and should be removed.
 - Didn't put the localhost url in env for easy change.
 - CORS (cross-origin resource sharing) causing error for unknown reason.
