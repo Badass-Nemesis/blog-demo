@@ -36,7 +36,6 @@ Check out the app in action:
 
 ## 🐞 Known Bugs & To-Do List
 
-- No checking for admin access to the admin dashboard.
 - JSON body token sending implemented instead of cookie token due to some code issues.
 - There are many debugging console.log statements that need to be removed.
 - Code refactoring is needed for better structure and readability.
