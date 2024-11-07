@@ -113,8 +113,9 @@
                         <textarea id="update-course-description" name="description" required></textarea>
                         <label for="update-course-price">Price:</label>
                         <input type="number" id="update-course-price" name="price" required>
-                        <label for="update-course-discount">Discount:</label>
-                        <input type="number" id="update-course-discount" name="discount" required>
+                        <label for="update-course-discount">Discount (%):</label>
+                        <input type="number" id="update-course-discount" name="discount" step="0.01" value="0.00"
+                            min="0" max="100">
                         <button type="submit">Update Course</button>
                     </form>
 
