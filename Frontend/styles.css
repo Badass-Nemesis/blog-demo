@@ -39,7 +39,7 @@ header nav ul li {
     margin: 0 1rem;
 }
 
-header nav ul li a {
+header a {
     color: #ffffff; /* White */
     text-decoration: none;
 }
@@ -87,11 +87,59 @@ footer {
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
+} 
+
+/* Course content styles */
+#course-content {
+    background-color: #ffffff; /* White background for the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a slight elevation effect */
+    padding: 2rem; /* Padding inside the container */
+    margin: 2rem auto; /* Center the container with margin */
+    max-width: 800px; /* Maximum width for the container */
+    text-align: center; /* Center align text inside the container */
+    position: relative; /* Position relative for child positioning */
+}
+
+#course-content h2 {
+    color: #333333; /* Dark gray text color */
+    margin-bottom: 1rem; /* Space below the heading */
+}
+
+.course-description {
+    font-size: 1rem; /* Font size for content */
+    color: #555555; /* Medium gray color for text */
+    margin-bottom: 1rem; /* Space below the description */
+}
+
+.course-price {
+    font-size: 1.5rem; /* Larger font size for price */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #ff5722; /* Color for price */
+    margin-bottom: 1rem; /* Space below the price */
+}
+
+.course-discount {
+    position: absolute;
+    top: 10px; /* Offset from top */
+    left: 10px; /* Offset from left */
+    background-color: #ff5722; /* Discount box background color */
+    color: #ffffff; /* White text */
+    padding: 0.5rem;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.8rem; /* Smaller font size */
+}
+
+/* Additional styles for displaying original price with discount */
+.original-price {
+    text-decoration: line-through; /* Strike through original price */
+    color: #999999; /* Light gray color */
 }
 
 #post-list,
 #upcoming-post-list,
-#course-list {
+#course-list,
+#all-post-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Spacing between items */
@@ -138,4 +186,33 @@ footer {
     color: #ff0000; /* Red color for countdown timer */
     font-size: 1rem; /* Font size for countdown timer */
     margin-top: 1rem; /* Spacing above the timer */
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-more {
+    font-size: 0.9rem;
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.view-more:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .course-item {
+        flex: 1 1 calc(45% - 20px); /* 2 items per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .course-item {
+        flex: 1 1 100%; /* 1 item per row */
+    }
 }
