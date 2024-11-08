@@ -9,7 +9,7 @@ This project is a full-stack application that features a backend server using No
 ## 🎥 Demo Video
 
 Check out the app in action:
-[![Demo Video](YTlink/maxresdefault.jpg)](YTlink)
+[![Demo Video](https://youtu.be/NsWz6dvjRKY/maxresdefault.jpg)](https://youtu.be/NsWz6dvjRKY)
 
 ## 📁 Project Structure
 
