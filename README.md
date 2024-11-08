@@ -53,6 +53,9 @@ Check out the app in action:
 
 ## 🚀 How to Start
 
+### Clone the repository first:
+    git clone https://github.com/Badass-Nemesis/blog-demo.git
+
 ### Backend
 1. Navigate to the `backend` folder:
    ```bash
